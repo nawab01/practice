@@ -1,21 +1,33 @@
+const playGame = (() => {
+let count = 0;
+const boxes = Array.from(document.getElementsByClassName('box'));
+console.log(boxes[0].innerText);
+const changeColor = (e) => {
+    let targetIndex = e.target.id
+    console.log(targetIndex);
+    if (boxes[targetIndex].innerText === '') {
+        if (count % 2 == 0) {
+        boxes[targetIndex].innerText = 'X'
+    }
+    if (count % 2 != 0) {
+        boxes[targetIndex].innerText = 'O'
+    }
+   }
 
-// object constructor example
-// function Player(name, marker) {
-//     this.name = name;
-//     this.marker = marker;
-// }
-// const player1 = new Player('john', 'x');
-// console.log(player1.name)
+   console.log(boxes[0].innerText);
 
-
-//factory functions using arrow func example
-// const Player = (name, marker) => ({ name, marker })
-// const player1 = Player('john', 'x');
-// console.log(player1.name)
-
-//regular factory function
-function Player(name, marker) {
-    return{ name, marker }
+       count++
 }
-const player1 = Player('john', 'x');
-console.log(player1.name)
+return {changeColor, boxes};
+
+})();
+
+const render = (() => {
+    const {changeColor} = playGame;
+    const {boxes} = playGame;
+
+boxes.forEach(box => {
+    box.addEventListener('click', changeColor);
+});
+})();
+
