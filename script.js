@@ -30,6 +30,8 @@ const playGame = (() => {
 
     const checkWinner = () => {
         const winner = document.getElementById('winner');
+
+        //conditional coordinates to check winning arrangment
         if (board[0].innerText === board[1].innerText && board[1].innerText === board[2].innerText && board[0].innerText !== '') {
             if (board[0].innerText === player1.marker) {
                 winner.innerText = `${player1.name} wins!`;
@@ -94,7 +96,6 @@ const playGame = (() => {
                 winner.innerText = `${player2.name} wins!`;
             }
         }
-        return;
         console.log(winner.innerText)
     }
 
